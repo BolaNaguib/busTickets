@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <!-- UIkit CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/uikit@3.2.6/dist/css/uikit.min.css"
+    />
+  </head>
+
+  <body>
+    <section class="uk-flex uk-flex-middle" uk-height-viewport>
+      <div class="uk-container uk-container-small">
+        <div
+          id="seaseatContainer"
+          class="uk-grid uk-child-width-1-6"
+          uk-grid="uk-margin"
+        ></div>
+        <hr />
+        <span id="values"></span>
+      </div>
+    </section>
+
+    <style>
+      .seat button {
+        width: 100%;
+        height: 100%;
+        padding: 30px 0px;
+        color: #fff;
+        border: 0px;
+        cursor: pointer;
+      }
+      .seat.empty button {
+        transition: 300ms;
+        background-color: #00d286;
+      }
+      .seat.empty button:hover {
+        transition: 300ms;
+        background-color: #007d4f;
+      }
+
+      .seat.taken button {
+        background-color: #c30000;
+        transition: 300ms;
+      }
+      .seat.taken button:hover {
+        transition: 300ms;
+        background-color: #9e0202;
+      }
+      .seat.notExist button {
+        cursor: default;
+        opacity: 0;
+      }
+    </style>
+    <!-- UIkit JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.2.6/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.2.6/dist/js/uikit-icons.min.js"></script>
+
+    <script>
+      // function to create new div
+      function createNode(element) {
+        return document.createElement(element);
+      }
+      // function to insert data in div
+      function append(parent, e) {
+        return parent.appendChild(e);
+      }
+
+      // set seats container
+      const seatContainer = document.getElementById("seaseatContainer");
+
+      // set Data Source
+      const url = "./bus.json";
+
+      // fetch Data from data source
+      fetch(url)
+        // Transform the data into json
+        .then(resp => resp.json())
+
+        // Manipulate Data
+        .then(function(data) {
+          // create seats param to map it
+          let seats = data.seats;
+
+          // map the json file
+          return seats.map(function(seat) {
+            // create div element
+            let div = createNode("div");
+
+            // add seat class to div
+            div.classList.add("seat");
+
+            // create button element
+            let button = createNode("button");
+            button.classList.add("button");
+
+            // add data to elemt
+            button.innerHTML = `${seat.name}`;
+            button.setAttribute("data", `${seat.name}`);
+            // check seat status
+            if (seat.status != "empty") {
+              div.classList.add("taken");
+            } else {
+              div.classList.add("empty");
+            }
+            // validate is bus truly exists
+            if (seat.valid == 0) {
+              button.disabled = true;
+              div.classList.add("notExist");
+            }
+            // append button to div
+            append(div, button);
+            // apend div to seatContainer
+            append(seatContainer, div);
+          });
+          console.log(seats);
+          // console.log(seat);
+        })
+        // check for errors
+        .catch(function(error) {
+          console.log(error);
+        });
+    </script>
+    <script>
+      // create clickEvents
+      function clickEvents() {
+        const buttonBox = $(".button");
+        // create empty Array
+        let seats = [];
+        // initiate values
+        let values = document.getElementById("values");
+        // onClick Event
+        buttonBox.on("click", function() {
+          // check if taken
+          if (
+            $(this)
+              .parent()
+              .hasClass("taken")
+          ) {
+            $(this)
+              .parent()
+              .toggleClass("empty taken");
+            let buttonAtrr = this.getAttribute("data");
+            seats = seats.filter(seat => seat !== buttonAtrr);
+            values.innerHTML = seats.join();
+          }
+          //   if not taken
+          else {
+            $(this)
+              .parent()
+              .toggleClass("empty taken");
+            let buttonAtrr = this.getAttribute("data");
+            let addToSeats = seats.push(buttonAtrr);
+            console.log(seats.join());
+            values.innerHTML = seats.join();
+          }
+        });
+      }
+      // initiate clickEvents with timeout
+      setTimeout(clickEvents, 1000);
+    </script>
+  </body>
+</html>
+
+<!--  json -->

@@ -1,0 +1,124 @@
+{
+    "seats": [
+        {
+            "valid": "1",
+            "status": "taken",
+            "name": "xxx1"
+        },
+        {
+            "valid": "1",
+            "status": "taken",
+            "name": "A352"
+        },
+        {
+            "valid": "1",
+            "status": "empty",
+            "name": "xxx3"
+        },
+        {
+            "valid": "1",
+            "status": "taken",
+            "name": "A354"
+        },
+        {
+            "valid": "1",
+            "status": "empty",
+            "name": "xxx5"
+        },
+        {
+            "valid": "1",
+            "status": "taken",
+            "name": "A356"
+        },
+        {
+            "valid": "1",
+            "status": "empty",
+            "name": "xxx7"
+        },
+        {
+            "valid": "1",
+            "status": "taken",
+            "name": "A358"
+        },
+        {
+            "valid": "1",
+            "status": "empty",
+            "name": "xxx9"
+        },
+        {
+            "valid": "1",
+            "status": "taken",
+            "name": "A3510"
+        },
+        {
+            "valid": "1",
+            "status": "empty",
+            "name": "xxx11"
+        },
+        {
+            "valid": "1",
+            "status": "taken",
+            "name": "A3512"
+        },
+        {
+            "valid": "1",
+            "status": "empty",
+            "name": "xxx13"
+        },
+        {
+            "valid": "1",
+            "status": "taken",
+            "name": "A3514"
+        },
+        {
+            "valid": "1",
+            "status": "empty",
+            "name": "xxx15"
+        },
+        {
+            "valid": "1",
+            "status": "taken",
+            "name": "A3516"
+        },
+        {
+            "valid": "1",
+            "status": "empty",
+            "name": "xxx17"
+        },
+        {
+            "valid": "1",
+            "status": "taken",
+            "name": "A3518"
+        },
+        {
+            "valid": "1",
+            "status": "empty",
+            "name": "xxx19"
+        },
+        {
+            "valid": "1",
+            "status": "taken",
+            "name": "A3520"
+        },
+        {
+            "valid": "1",
+            "status": "empty",
+            "name": "xxx21"
+        },
+        {
+            "valid": "1",
+            "status": "taken",
+            "name": "A3522"
+        },
+        {
+            "valid": "1",
+            "status": "empty",
+            "name": "xxx23"
+        },
+        {
+            "valid": "1",
+            "status": "taken",
+            "name": "A3524"
+        }
+    ]
+}
